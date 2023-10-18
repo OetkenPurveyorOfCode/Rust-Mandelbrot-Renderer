@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 minifb = "0.23"
 rayon = "1.5"
+
+[profile.release]
+debug=true

@@ -2,8 +2,8 @@ extern crate minifb;
 
 use minifb::{Key, MouseButton, MouseMode, Scale, ScaleMode, Window, WindowOptions};
 use rayon::prelude::*;
-const WIDTH: usize = 640;
-const HEIGHT: usize = 360;
+const WIDTH: usize = 1200;
+const HEIGHT: usize = 800;
 
 #[derive(Default, Debug)]
 struct Rect {
