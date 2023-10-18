@@ -13,6 +13,10 @@ struct Rect {
     y_max: f64,
 }
 
+fn map_iter_to_color(iter: usize, iterations: usize) -> u32{
+    ((255*iter / iterations) as u32  * 255 * 255) & 0xFF_FF_00_00
+}
+
 fn transform_pixel_to_coord_x(value: u32, width: usize, rect: &Rect) -> f64 {
     let x_coord = value as f64 / width as f64;
     let x_coord = (rect.x_max - rect.x_min) * x_coord + rect.x_min;
@@ -53,9 +57,9 @@ fn render(buffer: &mut Vec<u32>, width: usize, height: usize, rect: &Rect, itera
                 iter += 1;
             }
             if iter == iterations {
-                0x00_00_00_FF
+                0xFF_00_00_00
             } else {
-                0x00_FF_FF_FF
+                map_iter_to_color(iter, iterations)
             }
         })
         .collect();
