@@ -79,6 +79,10 @@ fn render_mouse_rect(buffer: &mut Vec<u32>, width: usize, rect: &Rect) {
     }
 }
 
+fn title_string(iterations: usize) -> String {
+    format!("Mandelbrot - ESC: EXIT  -  I/D: ITERATIONS={}  -  Arrows: MOVEMENT  -  +/-: ZOOM  -  R: Reset", iterations)
+}
+
 fn main() {
     let mut buffer: Vec<u32> = vec![0; WIDTH * HEIGHT];
     let options: WindowOptions = WindowOptions {
@@ -92,7 +96,7 @@ fn main() {
         none: false,
     };
     let mut window = Window::new(
-        "Mandelbrot - ESC: EXIT  -  I/D: ITERATIONS=100  -  Arrows: MOVEMENT  -  +/-: ZOOM  -  R: Reset",
+        &title_string(100),
         WIDTH,
         HEIGHT,
         options,
@@ -222,8 +226,7 @@ fn main() {
             if iterations < usize::MAX - increase {
                 iterations += increase;
             }
-            let title = format!("Mandelbrot - ESC: EXIT- I/D: ITERATIONS={iterations} - Arrows: MOVEMENT - +/-: ZOOM");
-            window.set_title(&title);
+            window.set_title(&title_string(iterations));
             dirty = true;
         }
         if window.is_key_down(Key::D) {
@@ -234,8 +237,7 @@ fn main() {
             if iterations > decrease {
                 iterations -= decrease;
             }
-            let title = format!("Mandelbrot - ESC: EXIT- I/D: ITERATIONS={iterations} - Arrows: MOVEMENT - +/-: ZOOM");
-            window.set_title(&title);
+            window.set_title(&title_string(iterations));
             dirty = true;
         }
         if window.is_key_down(Key::NumPadPlus) {
