@@ -91,7 +91,7 @@ fn main() {
         none: false,
     };
     let mut window = Window::new(
-        "Mandelbrot - ESC: EXIT- I/D: ITERATIONS=100 - Arrows: MOVEMENT - +/-: ZOOM",
+        "Mandelbrot - ESC: EXIT  -  I/D: ITERATIONS=100  -  Arrows: MOVEMENT  -  +/-: ZOOM  -  R: Reset",
         WIDTH,
         HEIGHT,
         options,
