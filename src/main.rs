@@ -1,3 +1,4 @@
+#![windows_subsystem = "windows"]
 extern crate minifb;
 
 use minifb::{Key, MouseButton, MouseMode, Scale, ScaleMode, Window, WindowOptions};
